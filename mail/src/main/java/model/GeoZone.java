@@ -6,7 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-@Getter
+
 @NoArgsConstructor
 @Entity
 @Table(name = "geozone")
