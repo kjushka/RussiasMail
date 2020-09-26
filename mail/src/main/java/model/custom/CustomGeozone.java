@@ -27,8 +27,4 @@ public class CustomGeozone {
     private Integer averageExecutionTime;
     private String providedFrom;
     private String providedTo;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> origin/master
