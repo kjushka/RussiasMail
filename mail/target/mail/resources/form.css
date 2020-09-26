@@ -1,0 +1,125 @@
+body {
+    background-color: #0055a6;
+}
+
+form {
+    margin-left: 39.5%;
+    margin-top: 5%;
+    text-align: center;
+    display: inline-block;
+    width: 350px;
+    padding-right: 8px;
+    padding-left: 8px;
+    padding-bottom: 16px;
+    background-color: #0055a6;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    font-family: 'Times New Roman';
+    text-align: center;
+    outline: none;
+    text-decoration: none;
+    transition: background-color 0.2s ease-out,
+    border-color 0.2s ease-out;
+}
+
+.form-group {
+    padding-top: 16px;
+}
+
+.inp {
+    padding-top: 16px;
+}
+
+#weight {
+    border: 2px solid #fff;
+    border-radius: 5px;
+    font-family: 'Times New Roman';
+    font-size: 150%;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+select {
+    border: 2px solid #fff;
+    border-radius: 5px;
+    font-family: 'Times New Roman';
+    font-size: 150%;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.radiocontainer {
+    padding-top: 16px;
+}
+
+p {
+    display: block;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.slidecontainer {
+    padding-top: 8px;
+    padding-bottom: 16px;
+}
+
+.slider {
+    -webkit-appearance: none;
+    padding-right: 8px;
+    padding-left: 8px;
+    width: 200px;
+    height: 5px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+}
+
+#btn-save {
+    display: inline-block;
+    width: 100px;
+    padding: 8px;
+    background-color: #0055a6;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    font-family: 'Times New Roman';
+    font-size: 150%;
+    text-align: center;
+    outline: none;
+    text-decoration: none;
+    transition: background-color 0.2s ease-out,
+    border-color 0.2s ease-out;
+}
+#btn-save:hover,
+#btn-save:active {
+    background-color: #0055a6; /* fallback */
+    background-color: rgba(255, 255, 255, 0.4);
+    border-color: #fff; /* fallback */
+    border-color: rgba(255, 255, 255, 0.4);
+    transition: background-color 0.3s ease-in,
+    border-color 0.3s ease-in;
+}
