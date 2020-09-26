@@ -1,9 +1,9 @@
-package model;
+package ru.isu.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import model.custom.CustomService;
+import ru.isu.model.custom.CustomService;
 
 import javax.persistence.*;
 import java.util.Set;

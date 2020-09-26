@@ -1,9 +1,9 @@
-package model.custom;
+package ru.isu.model.custom;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import model.Geozone;
+import ru.isu.model.Geozone;
 
 import javax.persistence.*;
 

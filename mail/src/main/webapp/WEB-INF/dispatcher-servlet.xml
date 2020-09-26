@@ -11,7 +11,7 @@
        http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.8.xsd
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
-    <context:component-scan base-package ="java"/>
+    <context:component-scan base-package ="ru.isu"/>
 
     <bean id="templateResolver"
           class="org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver">
@@ -56,11 +56,11 @@
 
 
 
-    <bean id="messageSource"
+    <!--<bean id="messageSource"
           class="org.springframework.context.support.ResourceBundleMessageSource">
         <property name="basename" value="messages" />
         <property name="defaultEncoding" value="UTF-8" />
-    </bean>
+    </bean>-->
 
     <!--Data conversion service-->
     <mvc:annotation-driven conversion-service="conversionService">

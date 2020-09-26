@@ -1,4 +1,4 @@
-package model;
+package ru.isu.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

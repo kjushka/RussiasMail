@@ -1,10 +1,10 @@
-package model.custom;
+package ru.isu.model.custom;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import model.Service;
-import model.SupplementaryCondition;
+import ru.isu.model.Service;
+import ru.isu.model.SupplementaryCondition;
 
 import javax.persistence.*;
 import java.util.Set;

@@ -1,4 +1,5 @@
-package model;
+package ru.isu.model;
+
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,12 +11,15 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity
-@Table(name = "geozone")
-public class Geozone {
+@Table(name = "supp_cond")
+public class SupplementaryCondition {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(
+            strategy = GenerationType.IDENTITY
+    )
     @Column(name = "id")
     private Long id;
     @Column(name = "name")
     private String name;
 }
+

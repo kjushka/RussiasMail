@@ -1,5 +1,4 @@
-package model;
-
+package ru.isu.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,17 +8,13 @@ import javax.persistence.*;
 
 @Setter
 @Getter
-@NoArgsConstructor
 @Entity
-@Table(name = "supp_cond")
-public class SupplementaryCondition {
+@NoArgsConstructor
+public class ServiceType {
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.IDENTITY
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
     @Column(name = "name")
     private String name;
 }
-

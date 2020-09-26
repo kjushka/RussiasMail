@@ -1,4 +1,4 @@
-package model;
+package ru.isu.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,9 +8,10 @@ import javax.persistence.*;
 
 @Setter
 @Getter
-@Entity
 @NoArgsConstructor
-public class ServiceType {
+@Entity
+@Table(name = "geozone")
+public class Geozone {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
