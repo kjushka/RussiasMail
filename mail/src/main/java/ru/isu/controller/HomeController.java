@@ -17,6 +17,9 @@ import ru.isu.service.UploadService;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 
 @Controller
@@ -51,9 +54,10 @@ public class HomeController {
     public String uploadData() throws IOException {
         Gson gson = new Gson();
         String filePath = "C:\\Users\\donto\\IdeaProjects\\springmvc-test\\films\\RussiasMail\\data.json";
-        String json = readUsingBufferedReader(filePath);
+        String json = Files.readString(Paths.get("C:\\Users\\donto\\IdeaProjects\\springmvc-test\\films\\RussiasMail\\data.json"),
+                Charset.forName("utf-8"));// readUsingBufferedReader(filePath);
         CustomData data = gson.fromJson(json, CustomData.class);
-        System.out.println(data.getData().getContractors().get(0));
+        System.out.println(data.getData().getGeozones().get(0));
         Runnable uploadToDB = () -> service.uploadToDB(data.getData());
         Thread thread = new Thread(uploadToDB);
         thread.start();

@@ -10,7 +10,7 @@
 <form action="#" th:action="@{/makeorder}"
       method="post">
     <div class="form-group">
-        <select style="font-family:'Times New Roman; '; font-size: 200%">
+        <select style="font-family:'Times New Roman; '; font-size: 150%">
             <option disabled selected hidden>Select sevice type:</option>
             <option value="1">The first mile</option>
             <option value="2">The last mile</option>
@@ -19,7 +19,7 @@
         </select>
     </div>
     <div class="form-group">
-        <select style="font-family:'Times New Roman'; font-size: 200%">
+        <select style="font-family:'Times New Roman'; font-size: 150%">
             <option disabled selected hidden>Select a geozone from:</option>
             <option value="1">Moscow. South</option>
             <option value="2">Moscow. South-East</option>
@@ -36,7 +36,7 @@
         </select>
     </div>
     <div class="form-group">
-        <select style="font-family:'Times New Roman'; font-size: 200%">
+        <select style="font-family:'Times New Roman'; font-size: 150%">
             <option disabled selected hidden>Select a geozone to:</option>
             <option value="1">Moscow. South</option>
             <option value="2">Moscow. South-East</option>
@@ -52,7 +52,19 @@
             <option value="12">Vladivostok</option>
         </select>
     </div>
+    <div class="inp">
+        <input type="text" id="weight" name="weight" placeholder="Enter the parcel weight" style="font-family:'Times New Roman'; font-size: 150%">
+    </div>
+    <div class="radiocontainer">
+        <p style="font-family:'Times New Roman'; font-size: 150%">What's more important to you?</p>
+        <label class="container">
+            <input type="radio" name="radio" id="price"><label for="price" style="font-family:'Times New Roman'; font-size: 150%">Price</label>
+            <input type="radio" name="radio" id="time"><label for="time" style="font-family:'Times New Roman'; font-size: 150%">Time</label>
+            <input type="radio" name="radio" id="pricetime"><label for="pricetime" style="font-family:'Times New Roman'; font-size: 150%">Price&Time</label>
+        </label>
+    </div>
     <div class="slidecontainer">
+        <p style="font-family:'Times New Roman'; font-size: 150%">How much are you willing to pay?</p>
         <input class="slider" type="range" step="100" min="100" max="1000" list="rangeList" onchange="document.getElementById('rangeValue').innerHTML = this.value;">
         <datalist id="rangeList">
             <option value="1" label="100">

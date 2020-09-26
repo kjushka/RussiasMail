@@ -3,6 +3,7 @@ package ru.isu.model.custom;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 import ru.isu.model.basic.Geozone;
 
 import javax.persistence.*;
@@ -13,7 +14,8 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class CustomGeozone {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator="system-uuid")
+    @GenericGenerator(name="system-uuid", strategy = "uuid")
     private String id;
     @ManyToOne(
             cascade = CascadeType.ALL,

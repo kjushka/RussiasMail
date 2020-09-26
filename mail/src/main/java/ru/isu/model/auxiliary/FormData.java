@@ -3,9 +3,11 @@ package ru.isu.model.auxiliary;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.util.Pair;
 import ru.isu.model.basic.Geozone;
 import ru.isu.model.basic.Service;
 import ru.isu.model.custom.Executor;
+import ru.isu.service.DecisionService;
 
 import java.util.List;
 
@@ -24,24 +26,17 @@ public class FormData {
     private double minQuality;
     private byte priority;
 
-    public double getMark(Executor executor) {
+    public double getMark(List<Pair<Executor, Geozone>> executors) {
         double mark = 0;
+        double priceMark = DecisionService.getPrice(executors, this) / (maxExecutorPrice - minExecutorPrice);
+        double qualityMark = DecisionService.getQuality(executors) / (maxQuality - minQuality);
         switch (priority) {
             case -1:
-            case 0:
+                mark += priceMark * 4 + qualityMark;
             case 1:
+                mark += priceMark + qualityMark * 4;
             default:
-        }
-        return mark;
-    }
-
-    public double getMark(List<Executor> executors) {
-        double mark = 0;
-        switch (priority) {
-            case -1:
-            case 0:
-            case 1:
-            default:
+                mark += priceMark * 2 + qualityMark * 2;
         }
         return mark;
     }

@@ -3,6 +3,7 @@ package ru.isu.model.custom;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,7 +16,8 @@ import javax.persistence.Id;
 @Entity
 public class OrderStatistics {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator="system-uuid")
+    @GenericGenerator(name="system-uuid", strategy = "uuid")
     private String id;
     private Integer ordersAssignedOverall;
     private Integer ordersCompleted;

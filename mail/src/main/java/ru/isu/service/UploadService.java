@@ -32,9 +32,9 @@ public class UploadService {
         loadGeozone(data.getGeozones());
         loadService(data.getServices());
         //loadServiceType(data.getServiceTypes());
-        loadSupp(data.getSupplementaryConditions());
+        //loadSupp(data.getSupplementaryConditions());
         loadExecutor(data.getContractors());
-        loadOrderChain(data.getOrderChains());
+        //loadOrderChain(data.getOrderChains());
     }
 
     private void loadGeozone(List<Geozone> geozones) {
