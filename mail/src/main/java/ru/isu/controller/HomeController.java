@@ -4,11 +4,14 @@ import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import ru.isu.model.auxiliary.FormData;
 import ru.isu.model.basic.Geozone;
 import ru.isu.model.custom.CustomData;
 import ru.isu.repository.GeozoneRepository;
+import ru.isu.service.DecisionService;
 import ru.isu.service.UploadService;
 
 import java.io.BufferedReader;
@@ -22,6 +25,8 @@ public class HomeController {
     private GeozoneRepository geozoneRepository;
     @Autowired
     private UploadService service;
+    @Autowired
+    private DecisionService decisionService;
 
     @RequestMapping(value = "/")
     public String home() {
@@ -32,11 +37,13 @@ public class HomeController {
     public String createForm(Model model) {
         List<Geozone> geozones = geozoneRepository.findAll();
         model.addAttribute("geozones", geozones);
+        model.addAttribute("formData", new FormData());
         return "form";
     }
 
     @RequestMapping(value = "/makeorder", method = RequestMethod.POST)
-    public String makeOrder() {
+    public String makeOrder(@ModelAttribute("formData")FormData formData) {
+        decisionService.getExecutorChain(formData);
         return "redirect: ./form";
     }
 

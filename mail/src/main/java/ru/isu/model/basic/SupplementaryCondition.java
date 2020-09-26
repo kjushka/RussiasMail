@@ -15,7 +15,7 @@ import javax.persistence.*;
 public class SupplementaryCondition {
     @Id
     @GeneratedValue(
-            strategy = GenerationType.IDENTITY
+            strategy = GenerationType.AUTO
     )
     @Column(name = "id")
     private String id;

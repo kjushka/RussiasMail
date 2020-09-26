@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html  xmlns:th="http://www.thymeleaf.org">
 <head>
+    <title>Start</title>
     <meta charset="UTF-8">
-    <title>Title</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script th:src="@{/resources/home.js}"></script>
+    <link rel="stylesheet" th:href="@{/resources/home.css}"/>
 </head>
 <body>
 <div>
-    <h2>Hello, User</h2>
-    <button type="button" id="butt">Go to form</button>
-    <a th:href="@{/upload}"><button type="button" id="kek">Upload</button></a>
+    <h2>Go to fill out the form</h2>
+    <button type="button" id="butt">Go!</button>
 </div>
 </body>
 </html>

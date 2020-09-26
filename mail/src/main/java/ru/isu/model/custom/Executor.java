@@ -3,11 +3,9 @@ package ru.isu.model.custom;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ru.isu.model.custom.CustomService;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 @Setter
 @Getter
@@ -16,7 +14,7 @@ import java.util.Set;
 public class Executor {
     @Id
     @GeneratedValue(
-            strategy = GenerationType.IDENTITY
+            strategy = GenerationType.AUTO
     )
     @Column(name = "id")
     private String id;
@@ -32,6 +30,13 @@ public class Executor {
             inverseJoinColumns = @JoinColumn(name = "service_id")
     )
     private List<CustomService> customServices;
-
+    @OneToOne(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER
+    )
+    @JoinColumn(
+            foreignKey = @ForeignKey(name = "statistics_id")
+    )
+    private Statistics statistics;
 }
 

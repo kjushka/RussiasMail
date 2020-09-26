@@ -1,4 +1,4 @@
-package ru.isu.model.order;
+package ru.isu.model.custom;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,17 +8,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.time.LocalDate;
 
-@Entity
-@Getter
 @Setter
+@Getter
 @NoArgsConstructor
-public class Timeslot {
+@Entity
+public class OrderStatistics {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
-    private LocalDate date;
-    private String from;
-    private String to;
+    private Integer ordersAssignedOverall;
+    private Integer ordersCompleted;
+    private Integer ordersCancelled;
+    private Integer ordersCancelledByClient;
+    private Integer ordersFailedToComplete;
 }
