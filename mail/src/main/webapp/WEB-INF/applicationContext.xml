@@ -14,6 +14,7 @@
     <jpa:repositories base-package="ru.isu.repository"/>
     <tx:annotation-driven/>
 
+    <bean class="ru.isu.service.UploadService" id="uploadService"/>
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
@@ -34,7 +35,7 @@
         </property>
         <property name="jpaProperties">
             <props>
-                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.hbm2ddl.auto">create</prop>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
                 <prop key="hibernate.hbm2ddl.import_files">rusmail.sql</prop>
             </props>

@@ -1,7 +1,11 @@
 package ru.isu.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import ru.isu.model.Geozone;
+import org.springframework.stereotype.Repository;
+import ru.isu.model.basic.Geozone;
 
-public interface GeozoneRepository extends JpaRepository<Geozone, Long> {
+@Repository
+public interface GeozoneRepository extends JpaRepository<Geozone, String> {
+
+
 }

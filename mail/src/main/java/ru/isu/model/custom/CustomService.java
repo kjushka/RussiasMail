@@ -3,10 +3,11 @@ package ru.isu.model.custom;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ru.isu.model.Service;
-import ru.isu.model.SupplementaryCondition;
+import ru.isu.model.basic.Service;
+import ru.isu.model.basic.SupplementaryCondition;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -16,7 +17,7 @@ import java.util.Set;
 public class CustomService {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
     @ManyToOne(
             cascade = CascadeType.ALL,
             fetch = FetchType.EAGER
@@ -34,17 +35,17 @@ public class CustomService {
             joinColumns = @JoinColumn(name = "cservice_id"),
             inverseJoinColumns = @JoinColumn(name = "supp_id")
     )
-    private Set<SupplementaryCondition> supplementaryConditions;
+    private List<SupplementaryCondition> supplementaryConditions;
     @OneToMany(
             cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER
+            fetch = FetchType.LAZY
     )
     @JoinTable(
             name = "cservice_cgeozone",
             joinColumns = @JoinColumn(name = "cservice_id"),
             inverseJoinColumns = @JoinColumn(name = "cgeozone_id")
     )
-    private Set<CustomGeozone> customGeozones;
+    private List<CustomGeozone> customGeozones;
     private Integer minWeight;
     private Integer maxWeight;
 }

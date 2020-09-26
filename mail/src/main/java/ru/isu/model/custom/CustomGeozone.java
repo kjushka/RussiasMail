@@ -3,7 +3,7 @@ package ru.isu.model.custom;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ru.isu.model.Geozone;
+import ru.isu.model.basic.Geozone;
 
 import javax.persistence.*;
 
@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class CustomGeozone {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
     @ManyToOne(
             cascade = CascadeType.ALL,
             fetch = FetchType.EAGER
