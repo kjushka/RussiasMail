@@ -15,6 +15,7 @@
     <tx:annotation-driven/>
 
     <bean class="ru.isu.service.UploadService" id="uploadService"/>
+    <bean class="ru.isu.service.DecisionService" id="decisionService"/>
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />

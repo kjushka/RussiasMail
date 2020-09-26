@@ -12,11 +12,8 @@ import ru.isu.repository.GeozoneRepository;
 import ru.isu.service.UploadService;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.List;
 
 @Controller
@@ -53,19 +50,19 @@ public class HomeController {
         Runnable uploadToDB = () -> service.uploadToDB(data.getData());
         Thread thread = new Thread(uploadToDB);
         thread.start();
-        return "redirect: ./";
+        return "redirect:/";
     }
 
     private static String readUsingBufferedReader(String fileName) throws IOException {
-        BufferedReader reader = new BufferedReader( new FileReader(fileName));
+        BufferedReader reader = new BufferedReader(new FileReader(fileName));
         String line = null;
         StringBuilder stringBuilder = new StringBuilder();
         String ls = System.getProperty("line.separator");
-        while( ( line = reader.readLine() ) != null ) {
-            stringBuilder.append( line );
-            stringBuilder.append( ls );
+        while ((line = reader.readLine()) != null) {
+            stringBuilder.append(line);
+            stringBuilder.append(ls);
         }
-        stringBuilder.deleteCharAt(stringBuilder.length()-1);
+        stringBuilder.deleteCharAt(stringBuilder.length() - 1);
         return stringBuilder.toString();
     }
 }
