@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Entity
 public class OrderData {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
     private Integer weight;
     @OneToOne

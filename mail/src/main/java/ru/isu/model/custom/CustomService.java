@@ -16,7 +16,7 @@ import java.util.Set;
 @NoArgsConstructor
 public class CustomService {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
     @ManyToOne(
             cascade = CascadeType.ALL,

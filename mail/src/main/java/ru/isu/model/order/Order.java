@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Entity
 public class Order {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
     @OneToOne(
             cascade = CascadeType.ALL,

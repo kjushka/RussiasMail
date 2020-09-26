@@ -16,7 +16,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class Timeslot {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
     private LocalDate date;
     private String from;

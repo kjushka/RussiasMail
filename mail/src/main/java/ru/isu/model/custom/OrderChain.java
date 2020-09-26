@@ -13,7 +13,7 @@ import java.util.List;
 @Entity
 public class OrderChain {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
     @OneToMany(
             cascade = CascadeType.ALL,

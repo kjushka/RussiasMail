@@ -12,7 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class ServiceType {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private String id;
     @Column(name = "name")

@@ -46,14 +46,14 @@ public class HomeController {
     @RequestMapping(value = "/upload")
     public String uploadData() throws IOException {
         Gson gson = new Gson();
-        String filePath = "C:\\Users\\donto\\IdeaProjects\\springmvc-test\\films\\RussiasMail\\data.json";
+        String filePath = "D:\\Проекты\\git\\RussiasMail\\data.json";
         String json = readUsingBufferedReader(filePath);
         CustomData data = gson.fromJson(json, CustomData.class);
         System.out.println(data.getData().getContractors().get(0));
         Runnable uploadToDB = () -> service.uploadToDB(data.getData());
         Thread thread = new Thread(uploadToDB);
         thread.start();
-        return "redirect: ./";
+        return "redirect:/";
     }
 
     private static String readUsingBufferedReader(String fileName) throws IOException {
