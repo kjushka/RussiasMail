@@ -28,6 +28,7 @@ public class Service {
             foreignKey = @ForeignKey(name = "service_type_id")
     )
     private ServiceType serviceType;
+<<<<<<< HEAD
     @OneToMany(
             cascade = CascadeType.ALL,
             fetch = FetchType.EAGER
@@ -41,3 +42,6 @@ public class Service {
 
 
 }
+=======
+}
+>>>>>>> origin/master

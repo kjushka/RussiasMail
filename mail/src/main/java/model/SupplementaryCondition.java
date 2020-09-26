@@ -21,4 +21,8 @@ public class SupplementaryCondition {
     private Long id;
     @Column(name = "name")
     private String name;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/master
