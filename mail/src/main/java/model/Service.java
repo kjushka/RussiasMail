@@ -28,15 +28,4 @@ public class Service {
             foreignKey = @ForeignKey(name = "service_type_id")
     )
     private ServiceType serviceType;
-    @OneToMany(
-            cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER
-    )
-    @JoinTable(
-            name = "service_supp",
-            joinColumns = @JoinColumn(name = "service_id"),
-            inverseJoinColumns = @JoinColumn(name = "supp_id")
-    )
-    private Set<SupplementaryCondition> supplementaryConditions;
-
 }

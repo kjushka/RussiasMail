@@ -3,6 +3,7 @@ package model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import model.custom.CustomService;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -29,6 +30,6 @@ public class Executor {
             joinColumns = @JoinColumn(name = "executor_id"),
             inverseJoinColumns = @JoinColumn(name = "service_id")
     )
-    private Set<Service> services;
+    private Set<CustomService> customServices;
 
 }
