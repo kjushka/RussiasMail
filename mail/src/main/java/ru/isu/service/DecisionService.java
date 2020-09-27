@@ -146,7 +146,6 @@ public class DecisionService {
         if (customService.getService().getName().equals(formData.getService().getName()) &&
                 customService.getMaxWeight() >= formData.getWeight() &&
                 customService.getMinWeight() <= formData.getWeight()) {
-            System.out.println("1st");
             for (CustomGeozone customGeozone :
                     customService.getCustomGeozones()) {
                 if (customGeozone.getGeozone().getName() == formData.getFrom().getName() &&
