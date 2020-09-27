@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+    <script th:src="@{/resources/form.js}"></script>
+    <link rel="stylesheet" th:href="@{/resources/form.css}"/>
+</head>
+<body>
+<form th:action="@{/makeorder}" th:object="${formData}"
+      method="post">
+    <div class="form-group">
+        <select style="font-family:'Times New Roman; '; font-size: 150%" th:field="*{service}">
+            <option disabled selected hidden value="empty">Select sevice type:</option>
+            <option th:each="serv:${services}" th:value="${serv}" th:text="${serv.name}"></option>
+        </select>
+    </div>
+    <div class="form-group">
+        <select style="font-family:'Times New Roman'; font-size: 150%"
+                th:field="*{from}">
+            <option disabled selected hidden value="empty">Select a geozone from:</option>
+            <option th:each="geo:${geozones}" th:value="${geo}" th:text="${geo.name}"></option>
+        </select>
+    </div>
+    <div class="form-group">
+        <select style="font-family:'Times New Roman'; font-size: 150%"
+                th:field="*{to}">
+            <option disabled selected hidden value="'empty'">Select a geozone to:</option>
+            <option th:each="geo:${geozones}" th:value="${geo}" th:text="${geo.name}"></option>
+        </select>
+    </div>
+    <div class="inp">
+        <input type="text" id="weight" name="weight" placeholder="Enter the parcel weight"
+               th:field="*{weight}" style="font-family:'Times New Roman'; font-size: 150%">
+    </div>
+    <div class="radiocontainer">
+        <p style="font-family:'Times New Roman'; font-size: 150%">What's more important to you?</p>
+        <label class="container">
+            <input type="radio" name="radio" id="price"><label for="price"
+                                                               th:field="*{priority}" th:value="-1"
+                                                               style="font-family:'Times New Roman'; font-size: 150%">Price</label>
+            <input type="radio" name="radio" id="time"><label for="time"
+                                                              th:field="*{priority}" th:value="0"
+                                                              style="font-family:'Times New Roman'; font-size: 150%">Time</label>
+            <input type="radio" name="radio" id="pricetime"><label for="pricetime"
+                                                                   th:field="*{priority}" th:value="1"
+                                                                   style="font-family:'Times New Roman'; font-size: 150%">Price&Time</label>
+        </label>
+    </div>
+    <div class="inp">
+        <input type="text" id="customer-price" name="price" placeholder="How much are you willing to pay?"
+               th:field="*{maxCustomerPrice}" style="font-family:'Times New Roman'; font-size: 150%">
+    </div>
+    <!--<div class="slidecontainer">
+        <p style="font-family:'Times New Roman'; font-size: 150%">How much are you willing to pay?</p>
+        <input class="slider" type="range" step="100" min="100" max="1000" list="rangeList" onchange="document.getElementById('rangeValue').innerHTML = this.value;">
+        <datalist id="rangeList">
+            <option value="1" label="100">
+            <option value="2" label="200">
+            <option value="3" label="300">
+            <option value="4" label="400">
+            <option value="5" label="500">
+            <option value="6" label="600">
+            <option value="7" label="700">
+            <option value="8" label="800">
+            <option value="9" label="900">
+            <option value="10" label="1000">
+        </datalist>
+        <span id="rangeValue" style="font-family:'Times New Roman'; font-size: 150%">500</span>
+    </div>-->
+    <button type="submit" id="btn-save" class="btn btn-primary">Submit</button>
+</form>
+</body>
+</html>
