@@ -7,63 +7,48 @@
     <link rel="stylesheet" th:href="@{/resources/form.css}"/>
 </head>
 <body>
-<form action="#" th:action="@{/makeorder}"
+<form th:action="@{/makeorder}" th:object="${formData}"
       method="post">
     <div class="form-group">
-        <select style="font-family:'Times New Roman; '; font-size: 150%">
-            <option disabled selected hidden>Select sevice type:</option>
-            <option value="1">The first mile</option>
-            <option value="2">The last mile</option>
-            <option value="3">Fullfillment</option>
-            <option value="4">Postal item</option>
+        <select style="font-family:'Times New Roman; '; font-size: 150%" th:name="service-name">
+            <option disabled selected hidden value="empty">Select sevice type:</option>
+            <option th:each="serv:${services}" th:value="${serv.name}" th:text="${serv.name}"></option>
         </select>
     </div>
     <div class="form-group">
-        <select style="font-family:'Times New Roman'; font-size: 150%">
-            <option disabled selected hidden>Select a geozone from:</option>
-            <option value="1">Moscow. South</option>
-            <option value="2">Moscow. South-East</option>
-            <option value="3">Moscow. East</option>
-            <option value="4">Moscow. North-East</option>
-            <option value="5">Moscow. North</option>
-            <option value="6">Moscow. North-West</option>
-            <option value="7">Moscow. West</option>
-            <option value="8">Moscow. South-West</option>
-            <option value="9">Kazan</option>
-            <option value="10">Saint Retersburg</option>
-            <option value="11">Nizhny Novgorod</option>
-            <option value="12">Vladivostok</option>
+        <select style="font-family:'Times New Roman'; font-size: 150%"
+        th:name="from">
+            <option disabled selected hidden value="empty">Select a geozone from:</option>
+            <option th:each="geo:${geozones}" th:value="${geo.name}" th:text="${geo.name}"></option>
         </select>
     </div>
     <div class="form-group">
-        <select style="font-family:'Times New Roman'; font-size: 150%">
-            <option disabled selected hidden>Select a geozone to:</option>
-            <option value="1">Moscow. South</option>
-            <option value="2">Moscow. South-East</option>
-            <option value="3">Moscow. East</option>
-            <option value="4">Moscow. North-East</option>
-            <option value="5">Moscow. North</option>
-            <option value="6">Moscow. North-West</option>
-            <option value="7">Moscow. West</option>
-            <option value="8">Moscow. South-West</option>
-            <option value="9">Kazan</option>
-            <option value="10">Saint Retersburg</option>
-            <option value="11">Nizhny Novgorod</option>
-            <option value="12">Vladivostok</option>
+        <select style="font-family:'Times New Roman'; font-size: 150%"
+        th:name="to">
+            <option disabled selected hidden value="'empty'">Select a geozone to:</option>
+            <option th:each="geo:${geozones}" th:value="${geo.name}" th:text="${geo.name}"></option>
         </select>
     </div>
     <div class="inp">
-        <input type="text" id="weight" name="weight" placeholder="Enter the parcel weight" style="font-family:'Times New Roman'; font-size: 150%">
+        <input type="text" id="weight" name="weight" placeholder="Enter the parcel weight"
+               th:name="weight" style="font-family:'Times New Roman'; font-size: 150%">
     </div>
     <div class="radiocontainer">
         <p style="font-family:'Times New Roman'; font-size: 150%">What's more important to you?</p>
         <label class="container">
-            <input type="radio" name="radio" id="price"><label for="price" style="font-family:'Times New Roman'; font-size: 150%">Price</label>
-            <input type="radio" name="radio" id="time"><label for="time" style="font-family:'Times New Roman'; font-size: 150%">Time</label>
-            <input type="radio" name="radio" id="pricetime"><label for="pricetime" style="font-family:'Times New Roman'; font-size: 150%">Price&Time</label>
+            <input type="radio" name="radio" id="price" th:name="priority" th:value="-1">
+            <label for="price" style="font-family:'Times New Roman'; font-size: 150%">Price</label>
+            <input type="radio" name="radio" id="time" th:name="priority" th:value="1">
+            <label for="time" style="font-family:'Times New Roman'; font-size: 150%">Quality</label>
+            <input type="radio" name="radio" id="pricetime" th:name="priority" th:value="0">
+            <label for="pricetime" style="font-family:'Times New Roman'; font-size: 150%">Price&Quality</label>
         </label>
     </div>
-    <div class="slidecontainer">
+    <div class="inp">
+        <input type="text" id="customer-price" name="price" placeholder="How much are you willing to pay?"
+               th:name="max-price" style="font-family:'Times New Roman'; font-size: 150%">
+    </div>
+    <!--<div class="slidecontainer">
         <p style="font-family:'Times New Roman'; font-size: 150%">How much are you willing to pay?</p>
         <input class="slider" type="range" step="100" min="100" max="1000" list="rangeList" onchange="document.getElementById('rangeValue').innerHTML = this.value;">
         <datalist id="rangeList">
@@ -79,7 +64,7 @@
             <option value="10" label="1000">
         </datalist>
         <span id="rangeValue" style="font-family:'Times New Roman'; font-size: 150%">500</span>
-    </div>
+    </div>-->
     <button type="submit" id="btn-save" class="btn btn-primary">Submit</button>
 </form>
 </body>

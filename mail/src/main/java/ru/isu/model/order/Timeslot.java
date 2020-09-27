@@ -1,13 +1,10 @@
 package ru.isu.model.order;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDate;
 
@@ -15,6 +12,8 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
+@AllArgsConstructor
 public class Timeslot {
     @Id
     @GeneratedValue(generator="system-uuid")

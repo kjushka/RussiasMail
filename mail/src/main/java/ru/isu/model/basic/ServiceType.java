@@ -1,8 +1,6 @@
 package ru.isu.model.basic;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -11,6 +9,8 @@ import javax.persistence.*;
 @Getter
 @Entity
 @NoArgsConstructor
+@ToString
+@AllArgsConstructor
 public class ServiceType {
     @Id
     @GeneratedValue(generator="system-uuid")

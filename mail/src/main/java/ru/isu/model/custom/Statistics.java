@@ -1,8 +1,6 @@
 package ru.isu.model.custom;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -11,6 +9,8 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @Entity
+@ToString
+@AllArgsConstructor
 public class Statistics {
     @Id
     @GeneratedValue(generator="system-uuid")

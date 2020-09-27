@@ -1,8 +1,6 @@
 package ru.isu.model.order;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 import ru.isu.model.basic.Service;
 
@@ -12,6 +10,8 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity
+@ToString
+@AllArgsConstructor
 public class Order {
     @Id
     @GeneratedValue(generator="system-uuid")

@@ -1,8 +1,6 @@
 package ru.isu.model.custom;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 import ru.isu.model.basic.Service;
 import ru.isu.model.basic.SupplementaryCondition;
@@ -15,6 +13,8 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
+@AllArgsConstructor
 public class CustomService {
     @Id
     @GeneratedValue(generator="system-uuid")

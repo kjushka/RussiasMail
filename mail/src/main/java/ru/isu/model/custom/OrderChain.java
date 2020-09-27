@@ -1,8 +1,6 @@
 package ru.isu.model.custom;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -12,6 +10,8 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @Entity
+@ToString
+@AllArgsConstructor
 public class OrderChain {
     @Id
     @GeneratedValue(generator="system-uuid")

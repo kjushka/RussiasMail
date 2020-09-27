@@ -1,5 +1,6 @@
 package ru.isu.model.basic;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,6 +13,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @Entity
+@AllArgsConstructor
 public class Service {
     @Id
     @GeneratedValue(generator="system-uuid")
@@ -41,6 +43,13 @@ public class Service {
     )
     private List<SupplementaryCondition> supplementaryConditions;
 
-
+    @Override
+    public String toString() {
+        return "Service{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }
 

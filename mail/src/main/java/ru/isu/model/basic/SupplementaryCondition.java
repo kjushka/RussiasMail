@@ -1,9 +1,7 @@
 package ru.isu.model.basic;
 
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -13,6 +11,8 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @Table(name = "supp_cond")
+@ToString
+@AllArgsConstructor
 public class SupplementaryCondition {
     @Id
     @GeneratedValue(generator="system-uuid")

@@ -1,8 +1,6 @@
 package ru.isu.model.custom;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 import ru.isu.model.basic.Geozone;
 
@@ -12,6 +10,8 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
+@AllArgsConstructor
 public class CustomGeozone {
     @Id
     @GeneratedValue(generator="system-uuid")

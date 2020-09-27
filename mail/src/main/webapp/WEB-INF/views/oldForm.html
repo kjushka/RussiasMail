@@ -10,43 +10,46 @@
 <form th:action="@{/makeorder}" th:object="${formData}"
       method="post">
     <div class="form-group">
-        <select style="font-family:'Times New Roman; '; font-size: 150%" th:name="service-name">
+        <select style="font-family:'Times New Roman; '; font-size: 150%" th:field="*{service}">
             <option disabled selected hidden value="empty">Select sevice type:</option>
-            <option th:each="serv:${services}" th:value="${serv.name}" th:text="${serv.name}"></option>
+            <option th:each="serv:${services}" th:value="${serv}" th:text="${serv.name}"></option>
         </select>
     </div>
     <div class="form-group">
         <select style="font-family:'Times New Roman'; font-size: 150%"
-        th:name="from">
+                th:field="*{from}">
             <option disabled selected hidden value="empty">Select a geozone from:</option>
-            <option th:each="geo:${geozones}" th:value="${geo.name}" th:text="${geo.name}"></option>
+            <option th:each="geo:${geozones}" th:value="${geo}" th:text="${geo.name}"></option>
         </select>
     </div>
     <div class="form-group">
         <select style="font-family:'Times New Roman'; font-size: 150%"
-        th:name="to">
+                th:field="*{to}">
             <option disabled selected hidden value="'empty'">Select a geozone to:</option>
-            <option th:each="geo:${geozones}" th:value="${geo.name}" th:text="${geo.name}"></option>
+            <option th:each="geo:${geozones}" th:value="${geo}" th:text="${geo.name}"></option>
         </select>
     </div>
     <div class="inp">
         <input type="text" id="weight" name="weight" placeholder="Enter the parcel weight"
-               th:name="weight" style="font-family:'Times New Roman'; font-size: 150%">
+               th:field="*{weight}" style="font-family:'Times New Roman'; font-size: 150%">
     </div>
     <div class="radiocontainer">
         <p style="font-family:'Times New Roman'; font-size: 150%">What's more important to you?</p>
         <label class="container">
-            <input type="radio" name="radio" id="price" th:name="priority" th:value="-1">
-            <label for="price" style="font-family:'Times New Roman'; font-size: 150%">Price</label>
-            <input type="radio" name="radio" id="time" th:name="priority" th:value="1">
-            <label for="time" style="font-family:'Times New Roman'; font-size: 150%">Quality</label>
-            <input type="radio" name="radio" id="pricetime" th:name="priority" th:value="0">
-            <label for="pricetime" style="font-family:'Times New Roman'; font-size: 150%">Price&Quality</label>
+            <input type="radio" name="radio" id="price"><label for="price"
+                                                               th:field="*{priority}" th:value="-1"
+                                                               style="font-family:'Times New Roman'; font-size: 150%">Price</label>
+            <input type="radio" name="radio" id="time"><label for="time"
+                                                              th:field="*{priority}" th:value="0"
+                                                              style="font-family:'Times New Roman'; font-size: 150%">Time</label>
+            <input type="radio" name="radio" id="pricetime"><label for="pricetime"
+                                                                   th:field="*{priority}" th:value="1"
+                                                                   style="font-family:'Times New Roman'; font-size: 150%">Price&Time</label>
         </label>
     </div>
     <div class="inp">
         <input type="text" id="customer-price" name="price" placeholder="How much are you willing to pay?"
-               th:name="max-price" style="font-family:'Times New Roman'; font-size: 150%">
+               th:field="*{maxCustomerPrice}" style="font-family:'Times New Roman'; font-size: 150%">
     </div>
     <!--<div class="slidecontainer">
         <p style="font-family:'Times New Roman'; font-size: 150%">How much are you willing to pay?</p>

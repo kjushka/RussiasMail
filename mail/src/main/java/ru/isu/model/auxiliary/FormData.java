@@ -40,4 +40,20 @@ public class FormData {
         }
         return mark;
     }
+
+    @Override
+    public String toString() {
+        return "FormData{" +
+                "service=" + service +
+                ", from=" + from +
+                ", to=" + to +
+                ", weight=" + weight +
+                ", maxCustomerPrice=" + maxCustomerPrice +
+                ", maxExecutorPrice=" + maxExecutorPrice +
+                ", minExecutorPrice=" + minExecutorPrice +
+                ", maxQuality=" + maxQuality +
+                ", minQuality=" + minQuality +
+                ", priority=" + priority +
+                '}';
+    }
 }

@@ -6,6 +6,5 @@ import ru.isu.model.basic.Geozone;
 
 @Repository
 public interface GeozoneRepository extends JpaRepository<Geozone, String> {
-
-
+    Geozone findGeozoneByName(String name);
 }

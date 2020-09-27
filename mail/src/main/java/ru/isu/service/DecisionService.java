@@ -1,7 +1,6 @@
 package ru.isu.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;
 import ru.isu.model.auxiliary.FormData;
@@ -19,12 +18,14 @@ public class DecisionService {
     @Autowired
     private ExecutorRepository executorRepository;
 
-    public List<Executor> getExecutorChain(FormData formData) {
+    public List<Pair<Executor, Geozone>> getExecutorChain(FormData formData) {
         List<Executor> allService = executorRepository.findAll();
+        System.out.println(formData);
         List<List<Pair<Executor, Geozone>>> availableChains = getAvailableChains(formData, allService);
-        if (formData.getTo().getName() == formData.getFrom().getName())
+        if (formData.getTo().getName().equals(formData.getFrom().getName())) {
             getAvailable(formData, allService, availableChains);
-        int maxPrice = 0, minPrice = 999999;
+        }
+        int maxPrice = 0, minPrice = Integer.MAX_VALUE;
         double bestQuality = 0, leastQuality = 10;
         for (List<Pair<Executor, Geozone>> chain :
                 availableChains) {
@@ -49,17 +50,45 @@ public class DecisionService {
             executorsMarks.put(chain, formData.getMark(chain));
         }
         Iterator iterator = executorsMarks.keySet().iterator();
-        List<Executor> best = null;
+        List<Pair<Executor, Geozone>> best = null;
         while (iterator.hasNext()) {
             if (best == null) {
-                best = (List<Executor>) iterator.next();
+                best = (List<Pair<Executor, Geozone>>) iterator.next();
                 continue;
             }
-            List<Executor> temp = (List<Executor>) iterator.next();
+            List<Pair<Executor, Geozone>> temp = (List<Pair<Executor, Geozone>>) iterator.next();
             if (executorsMarks.get(best) < executorsMarks.get(temp))
                 best = temp;
         }
         return best;
+    }
+
+    public static int getPrice(List<Pair<Executor, Geozone>> executors, FormData formData) {
+        int price = 0;
+        for (Pair<Executor,Geozone> pair :
+                executors) {
+            for (CustomService cservice :
+                    pair.getFirst().getCustomServices()) {
+                if (formData.getService().getName() == cservice.getService().getName())
+                    for (CustomGeozone cgeo :
+                            cservice.getCustomGeozones())
+                        if(cgeo.getGeozone().getName() == pair.getSecond().getName())
+                            price += cgeo.getServicePrice();
+            }
+        }
+        return price;
+    }
+
+    public static double getQuality(List<Pair<Executor, Geozone>> chain) {
+        double quality = 0;
+        for (Pair<Executor, Geozone> pair:
+                chain) {
+            OrderStatistics orderStatistics = pair.getFirst().getStatistics().getOrderStatistics();
+            quality += orderStatistics.getOrdersAssignedOverall()/10000;
+            quality += orderStatistics.getOrdersCompleted()/5000;
+            quality += 1 - (orderStatistics.getOrdersFailedToComplete() - orderStatistics.getOrdersCompleted());
+        }
+        return quality;
     }
 
     private void getAvailable(FormData formData, List<Executor> executors,
@@ -113,38 +142,11 @@ public class DecisionService {
         return chains;
     }
 
-    public static int getPrice(List<Pair<Executor, Geozone>> executors, FormData formData) {
-        int price = 0;
-        for (Pair<Executor,Geozone> pair :
-                executors) {
-            for (CustomService cservice :
-                    pair.getFirst().getCustomServices()) {
-                    if (formData.getService().getName() == cservice.getService().getName())
-                for (CustomGeozone cgeo :
-                        cservice.getCustomGeozones())
-                    if(cgeo.getGeozone().getName() == pair.getSecond().getName())
-                    price += cgeo.getServicePrice();
-            }
-        }
-        return price;
-    }
-
-    public static double getQuality(List<Pair<Executor, Geozone>> chain) {
-        double quality = 0;
-        for (Pair<Executor, Geozone> pair:
-             chain) {
-            OrderStatistics orderStatistics = pair.getFirst().getStatistics().getOrderStatistics();
-            quality += orderStatistics.getOrdersAssignedOverall()/10000;
-            quality += orderStatistics.getOrdersCompleted()/5000;
-            quality += 1 - (orderStatistics.getOrdersFailedToComplete() - orderStatistics.getOrdersCompleted());
-        }
-        return quality;
-    }
-
     private boolean isGood(CustomService customService, FormData formData) {
-        if (customService.getService().getName() == formData.getService().getName() &&
-                customService.getMaxWeight() > formData.getWeight() &&
-                customService.getMinWeight() < formData.getWeight()) {
+        if (customService.getService().getName().equals(formData.getService().getName()) &&
+                customService.getMaxWeight() >= formData.getWeight() &&
+                customService.getMinWeight() <= formData.getWeight()) {
+            System.out.println("1st");
             for (CustomGeozone customGeozone :
                     customService.getCustomGeozones()) {
                 if (customGeozone.getGeozone().getName() == formData.getFrom().getName() &&
@@ -159,8 +161,8 @@ public class DecisionService {
                           Geozone geozoneFrom, Geozone geozoneTo) {
         boolean flagTo = false, flagFrom = false;
         if (customService.getService().getName() == formData.getService().getName() &&
-                customService.getMaxWeight() > formData.getWeight() &&
-                customService.getMinWeight() < formData.getWeight()) {
+                customService.getMaxWeight() >= formData.getWeight() &&
+                customService.getMinWeight() <= formData.getWeight()) {
             for (CustomGeozone customGeozone :
                     customService.getCustomGeozones()) {
                 boolean flag = customGeozone.getServicePrice() <= formData.getMaxCustomerPrice();

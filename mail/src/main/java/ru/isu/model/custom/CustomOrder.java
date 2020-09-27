@@ -1,9 +1,7 @@
 package ru.isu.model.custom;
 
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 import ru.isu.model.basic.Geozone;
 import ru.isu.model.basic.SupplementaryCondition;
@@ -17,6 +15,8 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @Entity
+@ToString
+@AllArgsConstructor
 public class CustomOrder {
     @Id
     @GeneratedValue(generator="system-uuid")
